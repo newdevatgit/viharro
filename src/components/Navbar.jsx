@@ -6,28 +6,32 @@ function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-gray-800 p-4 rounded-xl border-2 border-green-700">
+    <nav className="bg-white border p-3 w-full">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white font-bold text-lg">VIHARRO</div>
+        <div className="text-gray-800 font-bold text-lg">VIHARRO</div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          <li className="text-gray-300 hover:text-white hover:underline">
+        <ul className="hidden md:flex space-x-6 items-center">
+          <li className="text-gray-600 hover:text-gray-800 hover:underline">
             <a href="#">Home</a>
           </li>
-          <li className="text-gray-300 hover:text-white hover:underline">
+          <li className="text-gray-600 hover:text-gray-800 hover:underline">
             <a href="#">About</a>
           </li>
-          <li className="text-gray-300 hover:text-white hover:underline">
+          <li className="text-gray-600 hover:text-gray-800 hover:underline">
             <a href="#">Contact</a>
           </li>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+              Sign up
+            </button>
+          
         </ul>
 
         {/* Mobile Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden text-gray-200 hover:text-white focus:outline-none"
+          className="md:hidden text-gray-600 hover:text-gray-800 focus:outline-none"
         >
           <svg
             className="h-8 w-8"
@@ -58,15 +62,20 @@ function Navbar() {
       {isOpen && (
         <div className="md:hidden mt-4">
           <ul className="flex flex-col space-y-4">
-            <li className="text-gray-300 hover:text-white hover:underline">
+            <li className="text-gray-600 hover:text-gray-800 hover:underline">
               <a href="#">Home</a>
             </li>
-            <li className="text-gray-300 hover:text-white hover:underline">
+            <li className="text-gray-600 hover:text-gray-800 hover:underline">
               <a href="#">About</a>
             </li>
-            <li className="text-gray-300 hover:text-white hover:underline">
+            <li className="text-gray-600 hover:text-gray-800 hover:underline">
               <a href="#">Contact</a>
             </li>
+            <li>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+              Sign up
+            </button>
+          </li>
           </ul>
         </div>
       )}

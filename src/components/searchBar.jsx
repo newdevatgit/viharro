@@ -2,7 +2,7 @@ import React from "react";
 
 function SearchBar() {
   return (
-    <div className="flex flex-col gap-4 bg-transparent w-full max-w-2xl mx-auto p-6 rounded-xl shadow-xl">
+    <div className="flex flex-col gap-4 bg-white w-full max-w-2xl mx-auto p-6 rounded-xl shadow-xl">
 
       <div className="text-3xl font-semibold text-gray-800 text-center">
         Find your next Adventure
