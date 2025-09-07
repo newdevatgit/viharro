@@ -1,21 +1,37 @@
 import React from "react";
 import SearchBar from "../components/searchBar.jsx";
+import Categories from "../components/Categories.jsx";
 
 function Home() {
     const Destinations = [{
         Title: "Card 1",
         image: "src/assets/Home_bg.png",
-        Description: "This is a description for card 1."
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         Title: "Card 2",
         image: "src/assets/Home_bg.png",
-        Description: "This is a description for card 2."
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         Title: "Card 3",
         image: "src/assets/Home_bg.png",
-        Description: "This is a description for card 3."
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+        Title: "Card 4",
+        image: "src/assets/Home_bg.png",
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+        Title: "Card 5",
+        image: "src/assets/Home_bg.png",
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+        Title: "Card 6",
+        image: "src/assets/Home_bg.png",
+        Description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
     ]
     return (
@@ -35,6 +51,7 @@ function Home() {
                     </div>
                 ))}
             </div>
+            <Categories />
         </div>
         </>
     )
