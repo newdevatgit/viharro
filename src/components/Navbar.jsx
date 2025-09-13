@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
@@ -14,18 +14,19 @@ function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 items-center">
           <li className="text-gray-600 hover:text-gray-800 hover:underline">
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="text-gray-600 hover:text-gray-800 hover:underline">
-            <a href="#">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li className="text-gray-600 hover:text-gray-800 hover:underline">
-            <a href="#">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
+          <Link to="/signup">
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
               Sign up
             </button>
-          
+          </Link>
         </ul>
 
         {/* Mobile Hamburger Button */}
@@ -63,19 +64,21 @@ function Navbar() {
         <div className="md:hidden mt-4">
           <ul className="flex flex-col space-y-4">
             <li className="text-gray-600 hover:text-gray-800 hover:underline">
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="text-gray-600 hover:text-gray-800 hover:underline">
-              <a href="#">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li className="text-gray-600 hover:text-gray-800 hover:underline">
-              <a href="#">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
             <li>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
-              Sign up
-            </button>
-          </li>
+              <Link to="/signup">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+                  Sign up
+                </button>
+              </Link>
+            </li>
           </ul>
         </div>
       )}
