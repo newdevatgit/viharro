@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -15,6 +16,9 @@ function Navbar() {
         <ul className="hidden md:flex space-x-6 items-center">
           <li className="text-gray-600 hover:text-gray-800 hover:underline">
             <Link to="/">Home</Link>
+          </li>
+          <li className="text-gray-600 hover:text-gray-800 hover:underline">
+            <Link to="/place">Place</Link>
           </li>
           <li className="text-gray-600 hover:text-gray-800 hover:underline">
             <Link to="/about">About</Link>
