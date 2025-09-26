@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "../components/searchBar.jsx";
 import Categories from "../components/Categories.jsx";
+import TrendingPlaces from "../components/TrendingPlaces.jsx";
 
 function Home() {
   const Destinations = [
@@ -54,6 +55,10 @@ function Home() {
       >
         <SearchBar />
       </div>
+
+<div className="container mx-auto mt-10">
+      <TrendingPlaces />
+</div>
 
       {/* Sliding Destinations Section */}
       <div className="container mx-auto">
