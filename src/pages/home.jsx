@@ -56,13 +56,13 @@ function Home() {
         <SearchBar />
       </div>
 
-<div className="container mx-auto mt-10">
-      <TrendingPlaces />
-</div>
+      <div className="container mx-auto mt-10">
+        <TrendingPlaces />
+      </div>
 
       {/* Sliding Destinations Section */}
       <div className="container mx-auto">
-        <h1 className="text-3xl p-6 text-blue">Explore the popular cities</h1>
+        <h1 className="text-3xl p-6 font-montserrat text-blue">Explore the popular cities</h1>
 
         <div className="flex space-x-6 overflow-x-auto p-6 scrollbar-hide">
           {Destinations.map((destination, index) => (
