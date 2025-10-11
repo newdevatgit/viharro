@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../api";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -6,20 +8,43 @@ export default function Login() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Login submitted:", form);
     // Later: backend (API)
+    try {
+      setLoading(true);
+      const res = await loginUser({
+        email: form.email,
+        password: form.password,
+      });
+
+    localStorage.setItem("token", res.data.access); // token store
+      alert("Login successful!");
+      navigate("/"); // login success -> home
+    } catch (err) {
+      console.error("Login error:", err.response?.data || err.message);
+      setError(err.response?.data?.error || "Invalid credentials.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Welcome Back</h2>
+        {error && (
+          <div className="mb-4 text-red-600 text-sm text-center">{error}</div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
