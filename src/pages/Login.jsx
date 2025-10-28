@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api";
 
 export default function Login() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -10,29 +13,35 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login submitted:", form);
     // Later: backend (API)
     try {
       setLoading(true);
-      const res = await loginUser({
-        email: form.email,
-        password: form.password,
+      const response = await fetch("http://localhost:8000/api/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
       });
 
-    localStorage.setItem("token", res.data.access); // token store
-      alert("Login successful!");
-      navigate("/"); // login success -> home
-    } catch (err) {
-      console.error("Login error:", err.response?.data || err.message);
-      setError(err.response?.data?.error || "Invalid credentials.");
+      const data = await response.json();
+
+      if (response.ok) {
+        login(data); // This will update the user state
+        navigate("/"); // Redirect to home page
+      } else {
+        setError(data.error || "Login failed");
+      }
+    } catch (error) {
+      setError("An error occurred during login");
     } finally {
       setLoading(false);
     }
