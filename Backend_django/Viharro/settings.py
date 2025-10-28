@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    " http://localhost:5173",  # React dev server
+    "http://localhost:5173"  # React dev server
 ]
 
 ROOT_URLCONF = 'Viharro.urls'
@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'Viharro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'viharo',        # PostgreSQL database
-        'USER': 'ankitkadam',      # PostgreSQL user
-        'PASSWORD': 'backend@',     # user ka password
-        'HOST': 'localhost',          # ya server IP
-        'PORT': '5432',               # default PostgreSQL port
+        'NAME': 'viharo',
+        'USER': 'ankitkadam',
+        'PASSWORD': 'backend@',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
