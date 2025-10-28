@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
   
   const toggleMenu = () => setIsOpen(!isOpen);
   
   const handleLogout = () => {
-    // logput logic
-    setUser(null);
+    logout(); // This will clear user state and localStorage
     setIsOpen(false);
+    navigate('/'); // Add this line to redirect after logout
   };
 
   return (
@@ -34,18 +36,27 @@ function Navbar() {
             <Link to="/contact">Contact</Link>
           </li>
           {!user ? (
-            <Link to="/signup">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
-                Sign up
-              </button>
-            </Link>
+            <>
+              <Link to="/signup">
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+                  Sign up
+                </button>
+              </Link>
+            </>
           ) : (
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg"
-            >
-              Logout
-            </button>
+            <>
+              <Link to="/profile">
+                <button className="text-gray-600 hover:text-gray-800 font-medium">
+                  Profile
+                </button>
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg"
+              >
+                Logout
+              </button>
+            </>
           )}
         </ul>
 
@@ -96,13 +107,6 @@ function Navbar() {
           <div className="flex flex-col items-center space-y-4 w-64">
             {!user ? (
               <>
-                <Link
-                  onClick={toggleMenu}
-                  to="/login"
-                  className="w-full border border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors text-center"
-                >
-                  Log in
-                </Link>
                 <Link
                   onClick={toggleMenu}
                   to="/signup"
