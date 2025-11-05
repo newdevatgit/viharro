@@ -15,7 +15,7 @@ function TrendingPlaces() {
   return (
     <div className="mt-10 px-4 ">
       <h2 className="text-2xl font-bold mb-4">🔥 Trending Places</h2>
-      <div className="flex space-x-6 overflow-x-auto scrollbar-hide">
+      <div className="flex space-x-6 overflow-x-auto scrollbar-hide py-4">
         {trending.map((place) => (
           <div key={place.id} className="flex-shrink-0 w-72 bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition">
             <img src={place.image} alt={place.name} className="w-full h-40 object-cover" />
